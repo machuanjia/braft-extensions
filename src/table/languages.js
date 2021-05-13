@@ -9,7 +9,8 @@ const zh = {
   'insertRow': '插入行',
   'removeRow': '删除行',
   'mergeCells': '合并单元格',
-  'splitCell': '拆分单元格'
+  'splitCell': '拆分单元格',
+  'setBackground': '设置背景色'
 }
 
 const zhHant = {
@@ -23,7 +24,8 @@ const zhHant = {
   'insertRow': '插入行',
   'removeRow': '删除行',
   'mergeCells': '合并单元格',
-  'splitCell': '拆分单元格'
+  'splitCell': '拆分单元格',
+  'setBackground': '设置背景色'
 }
 
 const en = {
@@ -37,7 +39,8 @@ const en = {
   'insertRow': 'Insert Row',
   'removeRow': 'Remove Row',
   'mergeCells': 'Merge Cells',
-  'splitCell': 'Split Cell'
+  'splitCell': 'Split Cell',
+  'setBackground': 'setBackground'
 }
 
 const pl = {
@@ -51,7 +54,8 @@ const pl = {
   'insertRow': 'Wstaw wiersz',
   'removeRow': 'Usuń wiersz',
   'mergeCells': 'Scal komórki',
-  'splitCell': 'Podziel komórkę'
+  'splitCell': 'Podziel komórkę',
+  'setBackground': 'setBackground'
 }
 
 const kr = {
@@ -65,7 +69,8 @@ const kr = {
   'insertRow': '행삽입',
   'removeRow': '행삭제',
   'mergeCells': '행삽입',
-  'splitCell': '셀분할'
+  'splitCell': '셀분할',
+  'setBackground': 'setBackground'
 }
 
 const jpn = {
@@ -79,7 +84,8 @@ const jpn = {
   'insertRow': '行を挿入',
   'removeRow': '行を削除',
   'mergeCells': 'セルを結合',
-  'splitCell': '分割セル'
+  'splitCell': '分割セル',
+  'setBackground': 'setBackground'
 }
 
 const pt_br = {
@@ -93,7 +99,8 @@ const pt_br = {
   'insertRow': 'Inserir Linha',
   'removeRow': 'Remover Linha',
   'mergeCells': 'Mesclar',
-  'splitCell': 'Dividir'
+  'splitCell': 'Dividir',
+  'setBackground': 'setBackground'
 }
 
 const nl = {
@@ -107,7 +114,8 @@ const nl = {
   'insertRow' : 'Voeg rij in' ,
   'removeRow' : 'Verwijder rij' ,
   'mergeCells' : 'Samenvoegen cellen' ,
-  'splitCell' : 'Split cell'
+  'splitCell' : 'Split cell',
+  'setBackground': 'setBackground'
 }
 
 export default { zh, zhHant, en, pl ,jpn, kr, pt_br, nl }
