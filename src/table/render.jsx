@@ -478,6 +478,14 @@ export class Table extends React.Component {
     this.props.editor.setValue(TableUtils.removeTable(this.props.editorState, this.tableKey))
   }
 
+  setBackground = ()=>{
+    const { selectedCells } = this.state
+    selectedCells.map((n)=>{
+      n.style.background = '#f00'
+      console.log(n)
+    })
+  }
+
   componentDidMount() {
     this.renderCells(this.props)
 
@@ -749,6 +757,7 @@ export class Table extends React.Component {
         <div className="context-menu-item" onMouseDown={this.mergeCells} data-disabled={!cellsMergeable}>{this.language.mergeCells}</div>
         <div className="context-menu-item" onMouseDown={this.splitCell} data-disabled={!cellSplittable}>{this.language.splitCell}</div>
         <div className="context-menu-item" onMouseDown={this.removeTable}>{this.language.removeTable}</div>
+        <div className="context-menu-item" onMouseDown={this.setBackground}>{this.language.setBackground}</div>
       </div>
     )
   }

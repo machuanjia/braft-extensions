@@ -155,7 +155,7 @@ var defineProperty = __webpack_require__(2);
 
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? Object(arguments[i]) : {};
+    var source = arguments[i] != null ? arguments[i] : {};
     var ownKeys = Object.keys(source);
 
     if (typeof Object.getOwnPropertySymbols === 'function') {
@@ -989,16 +989,16 @@ module.exports = _toConsumableArray;
 /* 17 */
 /***/ (function(module, exports) {
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
     module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
+      return _typeof2(obj);
     };
   } else {
     module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
     };
   }
 
@@ -1628,6 +1628,14 @@ function (_React$Component) {
       _this.props.editor.setValue(_utils__WEBPACK_IMPORTED_MODULE_12__["removeTable"](_this.props.editorState, _this.tableKey));
     });
 
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_8___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this)), "setBackground", function () {
+      var selectedCells = _this.state.selectedCells;
+      selectedCells.map(function (n) {
+        n.style.background = '#f00';
+        console.log(n);
+      });
+    });
+
     _this.language = getLanguage(props.editor);
     return _this;
   }
@@ -1943,7 +1951,10 @@ function (_React$Component) {
       }, this.language.splitCell), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "context-menu-item",
         onMouseDown: this.removeTable
-      }, this.language.removeTable));
+      }, this.language.removeTable), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "context-menu-item",
+        onMouseDown: this.setBackground
+      }, this.language.setBackground));
     }
   }, {
     key: "render",
@@ -2015,7 +2026,8 @@ var zh = {
   'insertRow': '插入行',
   'removeRow': '删除行',
   'mergeCells': '合并单元格',
-  'splitCell': '拆分单元格'
+  'splitCell': '拆分单元格',
+  'setBackground': '设置背景色'
 };
 var zhHant = {
   'rows': '行数',
@@ -2028,7 +2040,8 @@ var zhHant = {
   'insertRow': '插入行',
   'removeRow': '删除行',
   'mergeCells': '合并单元格',
-  'splitCell': '拆分单元格'
+  'splitCell': '拆分单元格',
+  'setBackground': '设置背景色'
 };
 var en = {
   'rows': 'Rows',
@@ -2041,7 +2054,8 @@ var en = {
   'insertRow': 'Insert Row',
   'removeRow': 'Remove Row',
   'mergeCells': 'Merge Cells',
-  'splitCell': 'Split Cell'
+  'splitCell': 'Split Cell',
+  'setBackground': 'setBackground'
 };
 var pl = {
   'rows': 'Wiersz',
@@ -2054,7 +2068,8 @@ var pl = {
   'insertRow': 'Wstaw wiersz',
   'removeRow': 'Usuń wiersz',
   'mergeCells': 'Scal komórki',
-  'splitCell': 'Podziel komórkę'
+  'splitCell': 'Podziel komórkę',
+  'setBackground': 'setBackground'
 };
 var kr = {
   'rows': '행수',
@@ -2067,7 +2082,8 @@ var kr = {
   'insertRow': '행삽입',
   'removeRow': '행삭제',
   'mergeCells': '행삽입',
-  'splitCell': '셀분할'
+  'splitCell': '셀분할',
+  'setBackground': 'setBackground'
 };
 var jpn = {
   'rows': '行数',
@@ -2080,7 +2096,8 @@ var jpn = {
   'insertRow': '行を挿入',
   'removeRow': '行を削除',
   'mergeCells': 'セルを結合',
-  'splitCell': '分割セル'
+  'splitCell': '分割セル',
+  'setBackground': 'setBackground'
 };
 var pt_br = {
   'rows': 'Linhas',
@@ -2093,7 +2110,8 @@ var pt_br = {
   'insertRow': 'Inserir Linha',
   'removeRow': 'Remover Linha',
   'mergeCells': 'Mesclar',
-  'splitCell': 'Dividir'
+  'splitCell': 'Dividir',
+  'setBackground': 'setBackground'
 };
 var nl = {
   'rows': 'Rijen',
@@ -2106,7 +2124,8 @@ var nl = {
   'insertRow': 'Voeg rij in',
   'removeRow': 'Verwijder rij',
   'mergeCells': 'Samenvoegen cellen',
-  'splitCell': 'Split cell'
+  'splitCell': 'Split cell',
+  'setBackground': 'setBackground'
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   zh: zh,
@@ -2135,10 +2154,6 @@ module.exports = _arrayWithHoles;
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -2731,7 +2746,12 @@ process.umask = function() { return 0; };
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "dropdownInstance", function() { return /* binding */ dropdownInstance; });
+__webpack_require__.d(__webpack_exports__, "TableUtils", function() { return /* binding */ TableUtils; });
 
 // EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/objectSpread.js
 var objectSpread = __webpack_require__(5);
@@ -3135,8 +3155,6 @@ var tableExportFn = function tableExportFn(exportAttrString) {
   };
 };
 // CONCATENATED MODULE: ./table/index.jsx
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dropdownInstance", function() { return dropdownInstance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableUtils", function() { return TableUtils; });
 
 
 
