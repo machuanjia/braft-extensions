@@ -52,7 +52,8 @@ export class Table extends React.Component {
     draggingRectBounding: null,
     cellsMergeable: false,
     cellSplittable: false,
-    contextMenuPosition: null
+    contextMenuPosition: null,
+    sketchColor:'#37b184'
   }
 
   __tableRef = null
@@ -503,6 +504,7 @@ export class Table extends React.Component {
       selectedCellsMap[n] = color.hex
     })
     this.setState({
+      sketchColor:color.hex,
       selectedCellsMap:{...this.state.selectedCellsMap}
     },this.renderCells)
   }
@@ -768,7 +770,7 @@ export class Table extends React.Component {
   }
 
   createContextMenu() {
-    const { cellsMergeable, cellSplittable, contextMenuPosition } = this.state
+    const { cellsMergeable, cellSplittable, contextMenuPosition, sketchColor } = this.state
 
     if (!contextMenuPosition) {
       return null
@@ -779,9 +781,9 @@ export class Table extends React.Component {
         <div className="context-menu-item" onMouseDown={this.mergeCells} data-disabled={!cellsMergeable}>{this.language.mergeCells}</div>
         <div className="context-menu-item" onMouseDown={this.splitCell} data-disabled={!cellSplittable}>{this.language.splitCell}</div>
         <div className="context-menu-item" onMouseDown={this.removeTable}>{this.language.removeTable}</div>
-        <div className="context-menu-item">
+        <div className="context-menu-item" style={{paddingBottom:'10px'}}>
           <div style={{margin:'10px 0'}}>{this.language.setBackground}</div>
-          <SketchPicker style={{marginBottom:'10px'}} ref={(ref)=>{this.colorPickerRef(ref)}} color={'#37b184'} onChangeComplete={(color)=>{this.setBackground(color)}}/>
+          <SketchPicker ref={(ref)=>{this.colorPickerRef(ref)}} color={sketchColor} onChangeComplete={(color)=>{this.setBackground(color)}}/>
         </div>
       </div>
     )

@@ -1162,7 +1162,8 @@ function (_React$Component) {
       draggingRectBounding: null,
       cellsMergeable: false,
       cellSplittable: false,
-      contextMenuPosition: null
+      contextMenuPosition: null,
+      sketchColor: '#37b184'
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_8___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this)), "__tableRef", null);
@@ -1664,6 +1665,7 @@ function (_React$Component) {
       });
 
       _this.setState({
+        sketchColor: color.hex,
         selectedCellsMap: _babel_runtime_helpers_objectSpread__WEBPACK_IMPORTED_MODULE_0___default()({}, _this.state.selectedCellsMap)
       }, _this.renderCells);
     });
@@ -1971,7 +1973,8 @@ function (_React$Component) {
       var _this$state9 = this.state,
           cellsMergeable = _this$state9.cellsMergeable,
           cellSplittable = _this$state9.cellSplittable,
-          contextMenuPosition = _this$state9.contextMenuPosition;
+          contextMenuPosition = _this$state9.contextMenuPosition,
+          sketchColor = _this$state9.sketchColor;
 
       if (!contextMenuPosition) {
         return null;
@@ -1994,19 +1997,19 @@ function (_React$Component) {
         className: "context-menu-item",
         onMouseDown: this.removeTable
       }, this.language.removeTable), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "context-menu-item"
+        className: "context-menu-item",
+        style: {
+          paddingBottom: '10px'
+        }
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         style: {
           margin: '10px 0'
         }
       }, this.language.setBackground), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_color__WEBPACK_IMPORTED_MODULE_14__["SketchPicker"], {
-        style: {
-          marginBottom: '10px'
-        },
         ref: function ref(_ref2) {
           _this7.colorPickerRef(_ref2);
         },
-        color: '#37b184',
+        color: sketchColor,
         onChangeComplete: function onChangeComplete(color) {
           _this7.setBackground(color);
         }
