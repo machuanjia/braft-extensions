@@ -781,7 +781,7 @@ export class Table extends React.Component {
         <div className="context-menu-item" onMouseDown={this.removeTable}>{this.language.removeTable}</div>
         <div className="context-menu-item">
           <div style={{margin:'10px 0'}}>{this.language.setBackground}</div>
-          <SketchPicker ref={(ref)=>{this.colorPickerRef(ref)}} color={'#37b184'} onChangeComplete={(color)=>{this.setBackground(color)}}/>
+          <SketchPicker style={{marginBottom:'10px'}} ref={(ref)=>{this.colorPickerRef(ref)}} color={'#37b184'} onChangeComplete={(color)=>{this.setBackground(color)}}/>
         </div>
       </div>
     )

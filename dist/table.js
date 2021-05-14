@@ -2000,6 +2000,9 @@ function (_React$Component) {
           margin: '10px 0'
         }
       }, this.language.setBackground), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_color__WEBPACK_IMPORTED_MODULE_14__["SketchPicker"], {
+        style: {
+          marginBottom: '10px'
+        },
         ref: function ref(_ref2) {
           _this7.colorPickerRef(_ref2);
         },

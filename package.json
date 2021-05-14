@@ -1,6 +1,6 @@
 {
   "name": "pherusa-braft-extensions",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Extensions for Braft Editor",
   "main": "dist/index.js",
   "scripts": {
