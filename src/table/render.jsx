@@ -3,6 +3,9 @@ import Immutable from 'immutable'
 import languages from './languages'
 import * as TableUtils from './utils'
 import BraftEditor from 'braft-editor'
+import { SketchPicker } from 'react-color'
+import { findDOMNode } from 'react-dom'
+// import { ContentUtils } from 'braft-utils'
 
 const getIndexFromEvent = (event, ignoredTarget = '') => {
   if (!isNaN(event)) {
@@ -27,7 +30,7 @@ export const getLanguage = (editor) => {
 }
 
 export class Table extends React.Component {
-
+  cpRef = null;
   constructor(props) {
     super(props)
     this.language = getLanguage(props.editor)
@@ -41,6 +44,7 @@ export class Table extends React.Component {
     colResizing: false,
     colResizeOffset: 0,
     selectedCells: [],
+    selectedCellsMap: {},
     selectedRowIndex: -1,
     selectedColumnIndex: -1,
     setFirstRowAsHead: false,
@@ -87,6 +91,11 @@ export class Table extends React.Component {
       }
     }
   }
+ 
+
+  colorPickerRef(ref){
+    this.cpRef = ref
+  }
 
   handleMouseUp = (event) => {
     if (event.button !== 0) {
@@ -113,9 +122,18 @@ export class Table extends React.Component {
         this.updateCellsData({ colgroupData: nextColToolHandlers.map(item => ({ width: item.width })) })
       })
     } else {
-      this.setState({
-        contextMenuPosition: null
-      })
+      let isHide = true
+      if(this.cpRef){
+        const faComponent = findDOMNode(this.cpRef)
+        if (faComponent) {
+          isHide = !faComponent.contains(event.target)
+        }
+      }
+      if(isHide){
+        this.setState({
+          contextMenuPosition: null
+        })
+      }
     }
   }
 
@@ -478,12 +496,15 @@ export class Table extends React.Component {
     this.props.editor.setValue(TableUtils.removeTable(this.props.editorState, this.tableKey))
   }
 
-  setBackground = ()=>{
-    const { selectedCells } = this.state
+
+  setBackground = (color)=>{
+    const { selectedCells,selectedCellsMap } = this.state
     selectedCells.map((n)=>{
-      n.style.background = '#f00'
-      console.log(n)
+      selectedCellsMap[n] = color.hex
     })
+    this.setState({
+      selectedCellsMap:{...this.state.selectedCellsMap}
+    },this.renderCells)
   }
 
   componentDidMount() {
@@ -588,6 +609,7 @@ export class Table extends React.Component {
         'data-cell-key': cell.key,
         'data-table-key': tableKey,
         className: `bf-table-cell ${cell.props.className}`,
+        style:{background: this.state.selectedCellsMap[cell.key] || '#fff'},
         colSpan: colSpan,
         rowSpan: rowSpan,
         onClick: this.selectCell,
@@ -757,7 +779,10 @@ export class Table extends React.Component {
         <div className="context-menu-item" onMouseDown={this.mergeCells} data-disabled={!cellsMergeable}>{this.language.mergeCells}</div>
         <div className="context-menu-item" onMouseDown={this.splitCell} data-disabled={!cellSplittable}>{this.language.splitCell}</div>
         <div className="context-menu-item" onMouseDown={this.removeTable}>{this.language.removeTable}</div>
-        <div className="context-menu-item" onMouseDown={this.setBackground}>{this.language.setBackground}</div>
+        <div className="context-menu-item">
+          <div style={{margin:'10px 0'}}>{this.language.setBackground}</div>
+          <SketchPicker ref={(ref)=>{this.colorPickerRef(ref)}} color={'#37b184'} onChangeComplete={(color)=>{this.setBackground(color)}}/>
+        </div>
       </div>
     )
   }

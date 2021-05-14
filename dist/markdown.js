@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("draft-js"), require("immutable"), require("braft-utils")) : factory(root["draft-js"], root["immutable"], root["braft-utils"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__6__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__5__, __WEBPACK_EXTERNAL_MODULE__6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 82);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -99,11 +99,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithHoles = __webpack_require__(23);
+var arrayWithHoles = __webpack_require__(24);
 
-var iterableToArrayLimit = __webpack_require__(24);
+var iterableToArrayLimit = __webpack_require__(25);
 
-var nonIterableRest = __webpack_require__(25);
+var nonIterableRest = __webpack_require__(26);
 
 function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
@@ -135,7 +135,7 @@ module.exports = _defineProperty;
 
 /***/ }),
 
-/***/ 23:
+/***/ 24:
 /***/ (function(module, exports) {
 
 function _arrayWithHoles(arr) {
@@ -146,10 +146,14 @@ module.exports = _arrayWithHoles;
 
 /***/ }),
 
-/***/ 24:
+/***/ 25:
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -179,7 +183,7 @@ module.exports = _iterableToArrayLimit;
 
 /***/ }),
 
-/***/ 25:
+/***/ 26:
 /***/ (function(module, exports) {
 
 function _nonIterableRest() {
@@ -198,20 +202,13 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
 /***/ }),
 
 /***/ 4:
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
-
-/***/ }),
-
-/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(2);
 
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
+    var source = arguments[i] != null ? Object(arguments[i]) : {};
     var ownKeys = Object.keys(source);
 
     if (typeof Object.getOwnPropertySymbols === 'function') {
@@ -232,6 +229,13 @@ module.exports = _objectSpread;
 
 /***/ }),
 
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
+
+/***/ }),
+
 /***/ 6:
 /***/ (function(module, exports) {
 
@@ -239,15 +243,14 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__6__;
 
 /***/ }),
 
-/***/ 82:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../node_modules/@babel/runtime/helpers/objectSpread.js
-var objectSpread = __webpack_require__(5);
+var objectSpread = __webpack_require__(4);
 var objectSpread_default = /*#__PURE__*/__webpack_require__.n(objectSpread);
 
 // EXTERNAL MODULE: external "draft-js"
@@ -394,7 +397,7 @@ var handleInlineStyle_handleInlineStyle = function handleInlineStyle(editorState
 
 /* harmony default export */ var modifiers_handleInlineStyle = (handleInlineStyle_handleInlineStyle);
 // EXTERNAL MODULE: external "immutable"
-var external_immutable_ = __webpack_require__(4);
+var external_immutable_ = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./markdown/modifiers/insertEmptyBlock.js
 
